@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzc.luntan.demo1.dao.CommentDao">
+    <insert id="addComment" parameterType="com.zzc.luntan.demo1.pojo.Comment">
+    insert into comment(id,postid,author,comment) values (#{id},#{postid},#{author},#{comment})
+    </insert>
+
+    <delete id="deleteComment" parameterType="int">
+        delete from comment where id=#{id}
+    </delete>
+
+    <select id="selectCommentByPostId" parameterType="int" resultType="com.zzc.luntan.demo1.pojo.Comment">
+        select * from comment where postid=#{id}
+    </select>
+
+    <select id="getAuthorById" resultType="string" parameterType="int">
+        select author from comment where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzc.luntan.demo1.dao.PostDao">
+
+    <insert id="insertPost" parameterType="com.zzc.luntan.demo1.pojo.Post">
+    insert into post(id,message,author,picture,praise,cai,cid,date) values (#{id},#{message},#{author},#{picture},#{praise},#{cai},#{cid},#{date})
+    </insert>
+
+    <delete id="deletePost" parameterType="int">
+        delete from post where id=#{id}
+    </delete>
+
+    <update id="updatePost" parameterType="com.zzc.luntan.demo1.pojo.Post">
+        update post set message=#{message},author=#{author},picture=#{picture},praise=#{praise},cai=#{cai},cid=#{cid},date=#{date} where id=#{id};
+    </update>
+
+    <select id="selectPostById" parameterType="int" resultType="com.zzc.luntan.demo1.pojo.Post">
+        select * from post where id=#{id}
+    </select>
+
+    <select id="displayAllPosts" resultType="com.zzc.luntan.demo1.pojo.Post">
+        select * from post
+    </select>
+
+    <select id="getAuthorById" resultType="string" parameterType="int">
+        select author from post where id=#{id}
+    </select>
+</mapper>
